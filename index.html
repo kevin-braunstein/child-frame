@@ -14,7 +14,7 @@ document.querySelector("button").addEventListener("click", function() {
   window.parent.postMessage("ping", '*');
 });
 
-const trustedOrigin = "https://kevinbraunstein.github.io/main-frame/";
+const trustedOrigin = "https://kevinbraunstein.github.io";
 
 window.addEventListener("message", (event) => {
   if (event.origin !== trustedOrigin) {
