@@ -23,7 +23,6 @@ window.addEventListener("message", (event) => {
   }
 
   console.log(`Received message from origin: ${event.origin}, data ${event.data}`);
-  console.log(`Message event source ` + event.source);
   
   document.getElementById("received_message").innerText = `Message from main frame: ${event.data}`;
 
