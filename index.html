@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Child Frame</title>
+</head>
+<body>
+
+<button>Post Message to Main Frame</button>
+
+<div id="received_message"></div>
+
+<script>
+document.querySelector("button").addEventListener("click", function() {
+  window.parent.postMessage("ping", '*');
+});
+
+const trustedOrigin = "https://kevinbraunstein.github.io/main-frame/";
+
+window.addEventListener("message", (event) => {
+  if (event.origin !== trustedOrigin) {
+    console.log(`Dropping message received from untrusted origin: ${event.origin}, data ${event.data}`);
+    return;
+  }
+
+  console.log(`Received message from origin: ${event.origin}, data ${event.data}`);
+  console.log(`Message event source ` + event.source);
+  
+  document.getElementById("received_message").innerText = `Message from main frame: ${event.data}`;
+
+});
+</script>
+
+</body>
+</html>
