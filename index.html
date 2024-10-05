@@ -19,6 +19,7 @@ const trustedOrigin = "https://kevinbraunstein.github.io";
 window.addEventListener("message", (event) => {
   if (event.origin !== trustedOrigin) {
     console.log(`Dropping message received from untrusted origin: ${event.origin}, data ${event.data}`);
+    document.getElementById("received_message").innerText = `Dropped message was: ${event.data}, from origin: ${event.origin}`;
     return;
   }
 
